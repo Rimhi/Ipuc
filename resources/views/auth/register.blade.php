@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('Registro') }}</div>
 
                 <div class="card-body">
+                    @if(isset($error))
+                        <div class="alert alert-danger">{{$error}}</div>
+                    @endif
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

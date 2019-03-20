@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\User;
 use App\Estado;
+use App\Departamento;
 
 class UserController extends Controller
 {
@@ -70,5 +71,20 @@ class UserController extends Controller
         }
         
         return redirect()->route('user.perfil',auth()->user()->id);
+    }
+    public function cargo(){
+        $users = User::all();
+
+        return view('user.cargo')->with(compact(['users']));
+    }
+    public function getUser($id){
+        $user= User::findOrFail($id);
+        $departamentos = Departamento::all();
+        return view('user.cargoadd')->with(compact(['user','departamentos']));
+    }
+    public function guardarcargo(Request $request){
+        $user = User::findOrFail($request->user_id);
+        $user->departamento()->attach($request->departamento_id,['cargo'=>$request->cargo]);
+        return redirect()->route('user.cargo');
     }
 }
