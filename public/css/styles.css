@@ -1,0 +1,97 @@
+.pub_image{
+	margin-bottom: 25px;
+}
+
+.pub_image .container-avatar{
+	width: 35px;
+	height: 35px;
+	border-radius: 900px;
+	overflow: hidden;
+	margin-left: 20px;
+
+}
+.pub_image .container-avatar img{
+	height: 100%;
+	width: 100%;
+}
+
+.pub_image .container-avatar{
+	float:left;
+	margin-right: 15px;
+}
+
+.pub_image .data-user{
+	font-weight: bold;
+	line-height: 35px;
+}
+.pub_image .nickname{
+	color: gray;
+}
+.image-container{
+	max-height: 400px;
+	overflow: hidden;
+	width: 100%;
+}
+.image-container img{
+	width: 100%;
+}
+.image-container video{
+	width: 100%;
+}
+.pub_image .card-body{
+	padding: 0px;
+}
+.pub_image .description{
+	padding: 20px;
+	padding-bottom: 0px;
+}
+.pub_image .btn-comments{
+	margin: 5px;
+	margin-top:0px;
+
+}
+.nickname .date{
+	margin-top: 30px;
+}
+
+.likes img{
+	width: 20px;
+}
+.likes{
+	float:left;
+	padding-left: 20px;
+	padding-right: 10px;
+
+}
+.pub_image .detail{
+	padding: 20px;
+}
+.pub_image .detail form p textarea{
+	height: 50px;
+	width: 100%;
+	resize: none;
+}
+.number_likes{
+	color: gray;
+	font-style: 10px;
+}
+.number_publicaciones{
+	color: gray;
+	margin-left: 20px;
+}
+.card-header .fecha-favoritos{
+	float: right;
+}
+.perfil-img{
+	width: 100px;
+	height: 100%;
+
+}
+.card-header .perfil-nombre{
+	float: right;
+}
+.estado{
+	height: 50px;
+	resize: none;
+	margin: 20px;
+}
