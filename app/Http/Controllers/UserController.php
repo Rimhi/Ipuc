@@ -28,7 +28,7 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
             'apellido' =>['required', 'string', 'max:255'],
             'direccion' => ['required', 'string', 'max:255'],
-            'cedula' =>['required', 'string','min:9','max:11'],
+            'cedula' =>['required', 'integer'],
             'telefono'=>['required', 'string','min:10','max:10'],
 
         ]);

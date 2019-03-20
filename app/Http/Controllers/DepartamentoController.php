@@ -46,7 +46,7 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $Departamento= Departamento::create($request->all());
-        return view('departamento.index');
+        return  redirect()->route('departamento.index');
     }
 
     /**
