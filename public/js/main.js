@@ -2,6 +2,7 @@
  window.addEventListener("load", function(){
 	$('.btn-like').css('cursor','pointer');
 	$('.btn-dislike').css('cursor','pointer');
+
 	$(document).on("click", ".btn-like", function(e){
 		$(this).addClass('btn-dislike').removeClass('btn-like');
 		$(this).attr('src', url+'/images/heartred.png');
@@ -9,8 +10,8 @@
 			url: url +'/like/'+ $(this).data('id'),
 			type: 'GET',
 			success: function(){
-				
-			}
+				console.log('like');
+			},
 
 		});
 	});
@@ -21,7 +22,7 @@
 			url: url +'/dislike/'+ $(this).data('id'),
 			type: 'GET',
 			success: function(){
-				
+				console.log('dislike');
 			}
 
 		});

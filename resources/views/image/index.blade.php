@@ -4,6 +4,9 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
+				@if(isset($message))
+					<div class="alert alert-success">{{$message}}</div>
+				@endif
 				@foreach($images as $image)
 					<div class="card pub_image">
 						<div class="card-header">

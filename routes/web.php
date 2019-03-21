@@ -25,7 +25,8 @@ Route::get('/add-cargo','UserController@cargo')->name('user.cargo');
 Route::get('/add-cargo-user/{id}','UserController@getUser')->name('user.cargoadd');
 Route::post('/add-cargo','UserController@guardarcargo')->name('user.cargopost');
 /*images*/
-Route::resource('image','ImageController');
+Route::resource('image','ImageController',['except' => ['destroy']]);
+Route::get('image/delete/{id}', 'ImageController@destroy')->name('image.destroy');
 Route::get('/image-image/{filename}','ImageController@getImage')->name('image.avatar');
 /*Comentarios*/
 Route::resource('comment','CommentController',['except' => ['destroy','index','create','show','edit']]);

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
+use App\Comment;
+use App\Like;
 
 class DepartamentoController extends Controller
 {
@@ -97,9 +99,31 @@ class DepartamentoController extends Controller
      * @param  \App\Departamento  $departamento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Departamento $departamento)
+    public function destroy($id)
     {
-        //
+        /*
+        $user = auth()->user();
+        $image = Image::findOrFail($id);
+        $comments = Comment::where('image_id',$image->id)->get();
+        $likes = Like::where('image_id',$image->id)->get();
+        if ($user && $image && $image->user->id == $user->id) {
+            if ($comments && count($comments)=>1) {
+                foreach ($comments as $comment) {
+                    $comment->delete();
+                }
+            }
+             if ($likes && count($likes)=>1) {
+                foreach ($likes as like) {
+                    $like->delete();
+                }
+            }
+            Storage::disk('images')->delete($image->image_path);
+            $image->delete()
+            $message = array('message'=>'La publicación se ha borrado con éxito');
+        }else{
+            $message = array('message'=>'La publicación no se ha borrado, no tienes permiso para hacerlo');
+        }
+        return redirect()->route('departamento.index')->with(compact(['mensaje']));*/
     }
      public function getImage($file_name){
         $file = Storage::disk('departamentos')->get($file_name);

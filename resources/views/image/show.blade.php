@@ -57,6 +57,12 @@
 								@endif
 
 							</div>
+							@if($image->user->id == auth()->user()->id)
+								<div class="actions">
+									<a href="" class="btn btn-sm btn-warning">Editar</a>
+									<a href="{{route('image.destroy',$image->id)}}" class="btn btn-sm btn-danger">Borrar</a>
+								</div>
+							@endif
 							<div class="clearfix"></div>
 							<div class="comments detail">
 

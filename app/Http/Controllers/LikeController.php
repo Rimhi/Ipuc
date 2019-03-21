@@ -20,8 +20,6 @@ class LikeController extends Controller
             $like->user_id = $user->id;
             $like->image_id = $image_id;
             $like->save();
-        }else{
-
         }
       
     
@@ -35,10 +33,7 @@ class LikeController extends Controller
                             ->where('image_id',$image_id)->first();
         if ($isset_like) {
             $isset_like->delete();
-        }else{
-            
         }
-      
     }
     public function userfavoritos(){
         $user = auth()->user();

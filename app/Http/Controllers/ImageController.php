@@ -8,6 +8,9 @@ use App\Departamento;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
+use App\Comment;
+use App\Like;
+
 
 class ImageController extends Controller
 {
@@ -104,9 +107,30 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id)
     {
-        //
+        $user = auth()->user();
+        $image = Image::findOrFail($id);
+        $comments = Comment::where('image_id',$image->id)->get();
+        $likes = Like::where('image_id',$image->id)->get();
+        if ($user && $image && $image->user->id == $user->id) {
+            if ($comments && count($comments)>=1) {
+                foreach ($comments as $comment) {
+                    $comment->delete();
+                }
+            }
+             if ($likes && count($likes)>=1) {
+                foreach ($likes as $like) {
+                    $like->delete();
+                }
+            }
+            Storage::disk('images')->delete($image->image_path);
+            $image->delete();
+            $message = array('message'=>'La publicación se ha borrado con éxito');
+        }else{
+            $message = array('message'=>'La publicación no se ha borrado, no tienes permiso para hacerlo');
+        }
+        return redirect()->route('image.index')->with(compact(['mensaje']));
     }
      public function getImage($file_name){
         $file = Storage::disk('images')->get($file_name);
