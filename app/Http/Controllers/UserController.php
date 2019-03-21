@@ -78,18 +78,33 @@ class UserController extends Controller
         return view('user.cargo')->with(compact(['users']));
     }
     public function getUser($id){
-        $user= User::findOrFail($id);
-        $departamentos = Departamento::all();
-        return view('user.cargoadd')->with(compact(['user','departamentos']));
+        if (auth()->user()->departamento == 'Junta Local') {
+            $user= User::findOrFail($id);
+            $departamentos = Departamento::all();
+            return view('user.cargoadd')->with(compact(['user','departamentos']));
+        }else{
+            echo "Ups... no tienes permitido acceder aqui";
+        }
+       
     }
     public function guardarcargo(Request $request){
-        $user = User::findOrFail($request->user_id);
-        $user->departamento()->attach($request->departamento_id,['cargo'=>$request->cargo]);
-        return redirect()->route('user.cargo');
+        if (auth()->user()->departamento == 'Junta Local') {
+            $user = User::findOrFail($request->user_id);
+            $user->departamento()->attach($request->departamento_id,['cargo'=>$request->cargo]);
+            return redirect()->route('user.cargo');
+        }else{
+            echo "Ups... no tienes permitido acceder aqui";
+        }
+        
     }
     public function eliminarcargo($id,$departamento){
-        $user = User::findOrFail($id);
-        $user->departamento()->detach($departamento);
-        return redirect()->route('user.cargo');
+        if (auth()->user()->departamento == 'Junta Local') {
+            $user = User::findOrFail($id);
+            $user->departamento()->detach($departamento);
+            return redirect()->route('user.cargo');
+        }else{
+            echo "Ups... no tienes permitido acceder aqui";
+        }
+        
     }
 }

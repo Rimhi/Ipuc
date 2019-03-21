@@ -57,9 +57,8 @@
 								@endif
 
 							</div>
-							@if($image->user->id == auth()->user()->id)
+							@if($image->user->id == auth()->user()->id || auth()->user()->departamento == 'Junta Local')
 								<div class="actions">
-									<a href="" class="btn btn-sm btn-warning">Editar</a>
 									<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">Borrar</button>
 								</div>
 								

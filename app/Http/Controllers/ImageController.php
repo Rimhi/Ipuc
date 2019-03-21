@@ -86,11 +86,7 @@ class ImageController extends Controller
      */
     public function edit($id)
     {
-        $user = auth()->user();
-        $image = Image::findOrFail($id);
-        if ($user && $image && $image->user->id == $user->id) {
-            return view('image.edit')->with(compact(['image']));
-        }
+       echo "hola";
     }
 
     /**
@@ -102,8 +98,7 @@ class ImageController extends Controller
      */
     public function update(Request $request)
     {
-        $user = auth()->user();
-        $image = Image::findOrFail($id);
+        
         
     }
 
