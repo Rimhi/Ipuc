@@ -2,13 +2,12 @@
 
 @section('content')
 <div class="container">
-	@if(Auth::user()->hasRole(['secretario']))
+	
 		@foreach(Auth::user()->departamento as $verificar)
 			@if($verificar->nombre  == 'Junta Local' )
 				<a class="btn btn-info" href="{{route('departamento.create')}}">Agregar</a>
 			@endif
 		@endforeach
-	@endif
 
 </div>
 <div class="container">

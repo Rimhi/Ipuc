@@ -84,9 +84,13 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(Image $image)
+    public function edit($id)
     {
-        //
+        $user = auth()->user();
+        $image = Image::findOrFail($id);
+        if ($user && $image && $image->user->id == $user->id) {
+            return view('image.edit')->with(compact(['image']))
+        }
     }
 
     /**
@@ -96,9 +100,11 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function update(Request $request)
     {
-        //
+        $user = auth()->user();
+        $image = Image::findOrFail($id);
+        
     }
 
     /**
