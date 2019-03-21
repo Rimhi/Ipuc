@@ -87,4 +87,9 @@ class UserController extends Controller
         $user->departamento()->attach($request->departamento_id,['cargo'=>$request->cargo]);
         return redirect()->route('user.cargo');
     }
+    public function eliminarcargo($id,$departamento){
+        $user = User::findOrFail($id);
+        $user->departamento()->detach($departamento);
+        return redirect()->route('user.cargo');
+    }
 }

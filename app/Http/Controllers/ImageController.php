@@ -89,7 +89,7 @@ class ImageController extends Controller
         $user = auth()->user();
         $image = Image::findOrFail($id);
         if ($user && $image && $image->user->id == $user->id) {
-            return view('image.edit')->with(compact(['image']))
+            return view('image.edit')->with(compact(['image']));
         }
     }
 

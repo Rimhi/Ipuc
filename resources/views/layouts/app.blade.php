@@ -64,7 +64,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('departamento.index')}}">Departamentos</a> 
                             </li>
-                            @if(Auth::user()->hasRole(['secretario']))
+                           
                                 @foreach(Auth::user()->departamento as $verificar)
                                     @if($verificar->nombre  == 'Junta Local' )
                                         <li class="nav-item">
@@ -72,7 +72,6 @@
                                         </li>
                                     @endif
                                 @endforeach
-                            @endif
                           
                             <li>
                                 &nbsp;
