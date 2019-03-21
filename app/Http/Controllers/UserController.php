@@ -78,43 +78,18 @@ class UserController extends Controller
         return view('user.cargo')->with(compact(['users']));
     }
     public function getUser($id){
-        foreach (auth()->user()->departamento  as $departamento) {
-            # code...
-        
-        if ($departamento->nombre == 'Junta Local') {
-            $user= User::findOrFail($id);
-            $departamentos = Departamento::all();
-            return view('user.cargoadd')->with(compact(['user','departamentos']));
-        }else{
-            echo "Ups... no tienes permitido acceder aqui";
-        }
-       }
+        $user= User::findOrFail($id);
+        $departamentos = Departamento::all();
+        return view('user.cargoadd')->with(compact(['user','departamentos']));
     }
     public function guardarcargo(Request $request){
-        foreach (auth()->user()->departamento  as $departamento) {
-            # code...
-        
-        if ($departamento->nombre == 'Junta Local') {
-            $user = User::findOrFail($request->user_id);
-            $user->departamento()->attach($request->departamento_id,['cargo'=>$request->cargo]);
-            return redirect()->route('user.cargo');
-        }else{
-            echo "Ups... no tienes permitido acceder aqui";
-        }
-       }
-        
+        $user = User::findOrFail($request->user_id);
+        $user->departamento()->attach($request->departamento_id,['cargo'=>$request->cargo]);
+        return redirect()->route('user.cargo');
     }
     public function eliminarcargo($id,$departamento){
-         foreach (auth()->user()->departamento  as $departamento) {
-            # code...
-        
-        if ($departamento->nombre == 'Junta Local') {
-             $user = User::findOrFail($id);
-            $user->departamento()->detach($departamento);
-            return redirect()->route('user.cargo');
-        }else{
-            echo "Ups... no tienes permitido acceder aqui";
-        }
-       }
+        $user = User::findOrFail($id);
+        $user->departamento()->detach($departamento);
+        return redirect()->route('user.cargo');
     }
 }
