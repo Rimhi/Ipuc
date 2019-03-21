@@ -60,7 +60,28 @@
 							@if($image->user->id == auth()->user()->id)
 								<div class="actions">
 									<a href="" class="btn btn-sm btn-warning">Editar</a>
-									<a href="{{route('image.destroy',$image->id)}}" class="btn btn-sm btn-danger">Borrar</a>
+									<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">Borrar</button>
+								</div>
+								
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLabel">¿Deseas eliminar esta publicación?</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								        {{'descripción: '.$image->description}}
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+								        <a href="{{route('image.destroy',$image->id)}}" class="btn btn-sm btn-danger">Borrar</a>
+								      </div>
+								    </div>
+								  </div>
 								</div>
 							@endif
 							<div class="clearfix"></div>
