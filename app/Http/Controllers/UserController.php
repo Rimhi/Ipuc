@@ -78,7 +78,7 @@ class UserController extends Controller
         return view('user.cargo')->with(compact(['users']));
     }
     public function getUser($id){
-        if (auth()->user()->departamento == 'Junta Local') {
+        if (auth()->user()->departamento->nombre == 'Junta Local') {
             $user= User::findOrFail($id);
             $departamentos = Departamento::all();
             return view('user.cargoadd')->with(compact(['user','departamentos']));
@@ -88,7 +88,7 @@ class UserController extends Controller
        
     }
     public function guardarcargo(Request $request){
-        if (auth()->user()->departamento == 'Junta Local') {
+        if (auth()->user()->departamento->nombre == 'Junta Local') {
             $user = User::findOrFail($request->user_id);
             $user->departamento()->attach($request->departamento_id,['cargo'=>$request->cargo]);
             return redirect()->route('user.cargo');
@@ -98,7 +98,7 @@ class UserController extends Controller
         
     }
     public function eliminarcargo($id,$departamento){
-        if (auth()->user()->departamento == 'Junta Local') {
+        if (auth()->user()->departamento->nombre == 'Junta Local') {
             $user = User::findOrFail($id);
             $user->departamento()->detach($departamento);
             return redirect()->route('user.cargo');
