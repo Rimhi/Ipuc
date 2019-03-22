@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form method="GET" action="{{route('user.cargo')}}" id="buscador">
-                <input type="text" name="search" id="search" class="form-control" placeholder="Buscar aquí ...">
+                <input type="text" id="search" class="form-control" placeholder="Buscar aquí ...">
                 <input type="submit" name="" value="Buscar" class="btn btn-success">
             </form>
             <div class="card">
