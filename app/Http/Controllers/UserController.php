@@ -72,8 +72,15 @@ class UserController extends Controller
         
         return redirect()->route('user.perfil',auth()->user()->id);
     }
-    public function cargo(){
-        $users = User::all();
+    public function cargo($search = null){
+        if (!empty($search)) {
+            $users = User::where('nombre','LIKE','%'.$search.'%')
+                        ->orWhere('apellido','LIKE','%'.$search.'%')
+                        ->orderBy('id','desc')
+                        ->get();
+        }else{
+            $users = User::all();
+        }
 
         return view('user.cargo')->with(compact(['users']));
     }

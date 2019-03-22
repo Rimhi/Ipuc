@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'apellido' =>['required', 'string', 'max:255'],
             'direccion' => ['required', 'string', 'max:255'],
-            'cedula' =>['required', 'string','min:9','max:11'],
+            'cedula' =>['required', 'integer'],
             'telefono'=>['required', 'string','min:10','max:10'],
 
         ]);

@@ -27,4 +27,8 @@
 
 		});
 	});
+	$(document).on("click", "#buscador", function(e){
+
+		$(this).attr('action', url+'/add-cargo/'+$('#search').val());
+	});
 });

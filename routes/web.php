@@ -21,7 +21,7 @@ Route::get('/user-image/{filename}','UserController@getImage')->name('user.avata
 Route::post('/user-edit','UserController@update')->name('user.update');
 Route::get('/perfil/{id}','UserController@perfil')->name('user.perfil');
 Route::post('/estado','UserController@estado')->name('user.estado');
-Route::get('/add-cargo','UserController@cargo')->name('user.cargo');
+Route::get('/add-cargo/{search?}','UserController@cargo')->name('user.cargo');
 Route::get('/add-cargo-user/{id}','UserController@getUser')->name('user.cargoadd');
 Route::post('/add-cargo','UserController@guardarcargo')->name('user.cargopost');
 Route::get('/delete-cargo/{id}/{departamento}','UserController@eliminarcargo')->name('user.cargodelete');
