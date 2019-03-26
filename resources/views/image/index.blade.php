@@ -25,6 +25,7 @@
 									</span>
 								@endif
 							@endforeach
+							<p style="float: right;">finaliza: {{$image->fecha_fin}}</p>
 							</div>
 						</div>
 						<div class="card-body">
