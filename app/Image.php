@@ -8,7 +8,7 @@ class Image extends Model
 {
     protected $table = 'images';
     protected $fillable = [
-        'descripcion','user_id','departamento_id'
+        'descripcion','user_id','departamento_id','fecha_fin'
     ];
 
 
@@ -23,5 +23,8 @@ class Image extends Model
     } 
     public function departamento(){
     	return $this->belongsTo(Departamento::class);
+    }
+     public function files(){
+        return $this->hasMany(Archivo::class);
     }
 }

@@ -28,17 +28,41 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<?php
-								$extencion = explode('.',$image->image_path);
-							?>
-							@if($image->image_path)
-								@if('mp4' !=end($extencion))
-									<div class="image-container">
-										<img src="{{route('image.avatar',['filename'=>$image->image_path])}}">
-									</div>
+							
+							@if($image->files)
+								@if(count($image->files)==1)
+									@foreach($image->files as $image_path)
+										<?php
+											$extencion = explode('.',$image_path->image_path);
+										?>
+										@if('mp4' !=end($extencion))
+											<div class="image-container">
+												<img src="{{route('image.avatar',['filename'=>$image_path->image_path])}}">
+											</div>
+										@else
+											<div class="image-container">
+												<video src="{{route('image.avatar',['filename'=>$image_path->image_path])}}" controls></video>
+											</div>
+										@endif
+									@endforeach
 								@else
-									<div class="image-container">
-										<video src="{{route('image.avatar',['filename'=>$image->image_path])}}" controls></video>
+									<div class="card-columns">
+									@foreach($image->files as $image_path)
+										<div class="card">
+										<?php
+											$extencion = explode('.',$image_path->image_path);
+										?>
+											@if('mp4' !=end($extencion))
+												
+													<img src="{{route('image.avatar',['filename'=>$image_path->image_path])}}" class="card-img-top">
+												
+											@else
+												
+													<video src="{{route('image.avatar',['filename'=>$image_path->image_path])}}" controls class="card-img-top"></video>
+												
+											@endif
+											</div>
+									@endforeach
 									</div>
 								@endif
 							@endif

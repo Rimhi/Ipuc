@@ -25,10 +25,12 @@ Route::get('/add-cargo/{search?}','UserController@cargo')->name('user.cargo');
 Route::get('/add-cargo-user/{id}','UserController@getUser')->name('user.cargoadd');
 Route::post('/add-cargo','UserController@guardarcargo')->name('user.cargopost');
 Route::get('/delete-cargo/{id}/{departamento}','UserController@eliminarcargo')->name('user.cargodelete');
+
 /*images*/
 Route::resource('image','ImageController',['except' => ['destroy']]);
 Route::get('image/delete/{id}', 'ImageController@destroy')->name('image.destroy');
 Route::get('/image-image/{filename}','ImageController@getImage')->name('image.avatar');
+Route::get('/just-image/{id}','ImageController@justimage')->name('image.just');
 /*Comentarios*/
 Route::resource('comment','CommentController',['except' => ['destroy','index','create','show','edit']]);
 Route::get('comment/delete/{id}', 'CommentController@destroy')->name('comment.destroy');
@@ -36,5 +38,8 @@ Route::get('comment/delete/{id}', 'CommentController@destroy')->name('comment.de
 Route::get('/like/{id}','LikeController@store')->name('like.store');
 Route::get('/dislike/{id}','LikeController@destroy')->name('like.destroy');
 Route::get('/favoritos','LikeController@userfavoritos')->name('like.fav');
+
+/*mail*/
+Route::post('/post-mail','MailController@post')->name('mail.send');
 
 Route::get('/', 'HomeController@index')->name('home');

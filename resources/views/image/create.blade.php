@@ -11,9 +11,10 @@
                         @csrf
                         <div class="form-group row">
                             
-                             <input type="text" name="departamento_id" class="form-control" value="{{$departamento->id}}" hidden>
+                            <input type="text" name="departamento_id" class="form-control" value="{{$departamento->id}}" hidden>
 
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion') }}</label>
+                           
                             <div class="col-md-6">
                                 <textarea id="description" type="text" class="form-control{{ $errors->has('descritcion') ? ' is-invalid' : '' }}" name="description" required autofocus></textarea>
                                 
@@ -30,11 +31,24 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" >
+                                <input id="image" type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image[]" multiple>
 
                                 @if ($errors->has('image'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="fecha_fin" class="col-md-4 col-form-label text-md-right">{{ __('Fecha de finalizacion') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="fecha_fin" type="date" class="form-control{{ $errors->has('fecha_fin') ? ' is-invalid' : '' }}" name="fecha_fin" value="{{ old('fecha_fin') }}" required>
+
+                                @if ($errors->has('fecha_fin'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('fecha_fin') }}</strong>
                                     </span>
                                 @endif
                             </div>

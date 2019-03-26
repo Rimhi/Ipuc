@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSessionIdToUsersTable extends Migration
+class AddFechaFinToImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class AddSessionIdToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('images', function (Blueprint $table) {
             $table->text('fecha_fin')
-                ->after('remember_token')
                 ->nullable()
                 ->default(null)
-                ->comment('Almacena el id de la sesión del usuario');
+                ->comment('Almacena la decha de fin de la publicacion del usuario');
         });
     }
 
@@ -29,8 +28,8 @@ class AddSessionIdToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-             $table->dropColumn('session_id');
+        Schema::table('images', function (Blueprint $table) {
+            $table->dropColumn('fecha_fin');
         });
     }
 }
