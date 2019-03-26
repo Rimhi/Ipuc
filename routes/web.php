@@ -42,4 +42,7 @@ Route::get('/favoritos','LikeController@userfavoritos')->name('like.fav');
 /*mail*/
 Route::post('/post-mail','MailController@post')->name('mail.send');
 
+/*Contacto*/
+Route::get('/contactanos','HomeController@contactanos')->name('contactanos');
+
 Route::get('/', 'HomeController@index')->name('home');

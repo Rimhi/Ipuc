@@ -50,6 +50,9 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
+                                <a href="{{route('contactanos')}}" class="nav-link">Contáctanos</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                             </li>
                             @if (Route::has('register'))
@@ -63,6 +66,9 @@
                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('departamento.index')}}">Departamentos</a> 
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('contactanos')}}" class="nav-link">Contáctanos</a>
                             </li>
                            
                                 @foreach(Auth::user()->departamento as $verificar)
