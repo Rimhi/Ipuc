@@ -30,11 +30,11 @@ class ImageController extends Controller
         $images = Image::orderBy('created_at','desc')->paginate(5);
         $date = Carbon::now()->format('Y-m-d');
         $now = Carbon::parse($date);
-        foreach ($images as $image) {
+       /*foreach ($images as $image) {
             if ($now->diffInDays($image->fecha_fin,false) == (-1)  ||  $image->fecha_fin == null) {
                 return redirect()->route('image.destroy',$image->id);
             }
-        }
+        }*/
         return view('image.index')->with(compact(['images']));
     }
 
