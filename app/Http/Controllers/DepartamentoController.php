@@ -24,7 +24,7 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::all();
+        $departamentos = Departamento::orderBy('id')->paginate(3);
         return view('departamento.index')->with(compact(['departamentos']));
     }
 

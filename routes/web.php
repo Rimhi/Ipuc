@@ -39,6 +39,9 @@ Route::get('/like/{id}','LikeController@store')->name('like.store');
 Route::get('/dislike/{id}','LikeController@destroy')->name('like.destroy');
 Route::get('/favoritos','LikeController@userfavoritos')->name('like.fav');
 
+/*Foro*/
+Route::resource('foro','ForoController');
+
 /*mail*/
 Route::post('/post-mail','MailController@post')->name('mail.send');
 

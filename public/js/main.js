@@ -3,7 +3,7 @@
 	$('.btn-like').css('cursor','pointer');
 	$('.btn-dislike').css('cursor','pointer');
 
-	$(document).on("click", ".btn-like", function(e){
+ 	$(document).on("click", ".btn-like", function(e){
 		$(this).addClass('btn-dislike').removeClass('btn-like');
 		$(this).attr('src', url+'/images/heartred.png');
 		$.ajax({
@@ -31,4 +31,5 @@
 
 		$(this).attr('action', url+'/add-cargo/'+$('#search').val());
 	});
+
 });

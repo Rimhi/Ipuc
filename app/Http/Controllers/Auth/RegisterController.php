@@ -70,7 +70,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
+        $datos = [
+            'email'=>$data['email'],
+            'nombre'=>$data['nombre'],
+            'apellido'=>$data['apellido'],
+            'pass'=>$data['password']
+
+        ];
+       Mail::send('mail.register',['datos'=>$datos],function($mensaje) use ($datos){
+                $mensaje->to($datos['email'],$datos['nombre'].' '.$datos['apellido'])->subject('Bienvenido a IpucMocari'); 
+        });
             return User::create([
             'nombre' => $data['nombre'],
             'apellido'=> $data['apellido'],

@@ -8,24 +8,44 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta http-equiv=”Cache-Control” content=”no-cache, mustrevalidate”>
 
     <!-- Scripts -->
 
     <script src="{{ asset('js/main.js') }}" ></script>
-
+    <link rel="icon" type="image/png" href="{{asset('images/LogoIPUC.png')}}">
     
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/baraja.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/custom.css')}}">
+    <script type="text/javascript" src="{{asset('js/modernizr.custom.79639.js')}}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <!--Trumbowyg-->
+
+    <!-- Import jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+
+    <!-- Import Trumbowyg -->
+    <script src="node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
+
+    <!-- Import Trumbowyg plugins... -->
+    <script src="node_modules/trumbowyg/dist/plugins/upload/trumbowyg.cleanpaste.min.js"></script>
+    <script src="node_modules/trumbowyg/dist/plugins/upload/trumbowyg.pasteimage.min.js"></script>
+   
     
 </head>
 <body>
@@ -33,7 +53,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                   <img src="{{asset('images/LogoIpuc.png')}}" style="max-width: 60px;"> {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -69,6 +89,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('contactanos')}}" class="nav-link">Contáctanos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('foro.create')}}" class="nav-link">Foro</a>
                             </li>
                            
                                 @foreach(Auth::user()->departamento as $verificar)
@@ -131,5 +154,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('js')
 </body>
 </html>
+ 

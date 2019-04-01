@@ -12,34 +12,42 @@
             </div>
        
             <div class="col-md-4">
-                <div class="card-header">Contáctanos</div>
+                <div class="card-header">Como llegar</div>
                 <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 8.8057519, lng: -75.8543931},
-          zoom: 22
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvzqMe6oFGiObPaDcgFtXxSL9Yw0Q4nt0&callback=initMap"
-    async defer></script>
+                    /* Always set the map height explicitly to define the size of the div
+                     * element that contains the map. */
+                    #map {
+                      height: 100%;
+                    }
+                    /* Optional: Makes the sample page fill the window. */
+                    html, body {
+                      height: 100%;
+                      margin: 0;
+                      padding: 0;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div id="map"></div>
+                  <script>
+                    var map;
+                    function initMap() {
+                      map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: 8.8057519, lng: -75.8543931},
+                        zoom: 22
+                      });
+                    }
+                  </script>
+                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvzqMe6oFGiObPaDcgFtXxSL9Yw0Q4nt0&callback=initMap"
+                  async defer></script>
+                  <p></p>
+                  @foreach($users as $user)
+                    @foreach($user->departamento as $verificar)
+                      @if($verificar->nombre == 'Junta Local')
+                        <p>{{$user->nombre.' '.$user->apellido}} <br>Telefono: {{$user->telefono}}</p>
+                      @endif
+                    @endforeach
+                  @endforeach
             </div>
         </div>
     </div>
